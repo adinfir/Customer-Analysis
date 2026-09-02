@@ -1,4 +1,4 @@
-# Customer Demographics, Purchase Behavior & RFM Analysis
+# Customer Analysis
 
 ## 📌 Project Overview
 
