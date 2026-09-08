@@ -115,7 +115,7 @@ orders
   │ order_id
   ▼
 order_items
-
+```
 This relationship allows order-level metrics to be combined with item-level sales and product attributes.
 
 ---
