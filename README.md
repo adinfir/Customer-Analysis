@@ -180,16 +180,102 @@ Customers whose cumulative monetary distribution places them in the top 10% base
 
 ---
 
-## 📈 Key Findings
+## 📈 Insight
 
-* **11,825 customers** across 15 countries, with a nearly balanced gender distribution — **Female 51.2%** vs **Male 48.8%**.
-* **Gen X (27.4%)** and **Millennial (25.9%)** are the two largest age segments, together representing more than half of the customer base.
-* **China (33.9%)** and the **United States (22.8%)** are the two largest customer markets. Combined with Brazil, South Korea, and France, these five markets account for **81.4%** of the total customer base.
-* Customer retention remains a major challenge: **93.78% of customers are one-time buyers**, while only **6.22% (735 customers)** made multiple purchases during 2024–2025.
-* RFM-based Pareto analysis identified **1,192 top-10% customers**, with spending ranging from **$239 to $2,321** and an average spend of **$432**. This segment contributed **38.4% of total revenue**, equivalent to approximately **$515K of $1.34M**.
-* Within the top 10% spending segment, **56.3% are repeat buyers (frequency ≥ 2)**, indicating substantially stronger purchase behavior than the overall customer base and making this group a priority for retention initiatives.
-* **130 high-value customers** with **frequency ≥ 3** generated an average spend of **$613**, making them strong candidates for VIP, loyalty, and personalized retention programs.
-* The **highest-spending customer (ID 41696)** generated **$2,321** across 3 transactions but has been inactive for **672 days**, indicating a high-value customer with significant churn risk.
+### 👥 Customer Base Distribution
+
+A total of **11,825 customers** were identified across **15 countries** during the 2024–2025 analysis period.
+
+The gender distribution was relatively balanced, with **Female customers accounting for 51.2%** and **Male customers 48.8%**.
+
+This indicates that the customer base is broadly balanced by gender, suggesting that customer acquisition and retention strategies do not need to rely heavily on a single gender segment.
+
+---
+
+### 🎯 Dominant Age Segments
+
+**Gen X (27.4%)** and **Millennial (25.9%)** were the two largest customer segments, together representing more than half of the customer base.
+
+These segments should be considered important audiences for **targeted campaigns, personalized offers, and retention initiatives**, particularly when combined with their purchase frequency and spending behavior.
+
+---
+
+### 🌍 Customer Concentration Across Markets
+
+**China (33.9%)** and the **United States (22.8%)** were the two largest customer markets.
+
+Together with **Brazil, South Korea, and France**, these five countries accounted for **81.4% of the total customer base**.
+
+This concentration suggests that customer activity is heavily concentrated in a relatively small number of markets, making these countries important priorities for **localized marketing, customer retention, and market-specific strategies**.
+
+---
+
+### ⚠️ High One-Time Buyer Rate
+
+Customer retention represents a major challenge.
+
+**93.78% of customers made only one purchase**, while just **6.22% (735 customers)** made multiple purchases during 2024–2025.
+
+The very low repeat-purchase rate indicates that the business has a substantial opportunity to improve **customer retention, repeat purchase behavior, and post-purchase engagement**.
+
+Potential strategies include:
+
+* Personalized follow-up campaigns
+* Repeat-purchase incentives
+* Loyalty programs
+* Cross-selling and product recommendations
+* Targeted reactivation campaigns
+
+---
+
+### 💰 Top 10% Customers Drive a Significant Share of Revenue
+
+RFM-based Pareto analysis identified **1,192 customers in the top 10% by monetary value**.
+
+Their spending ranged from **$239 to $2,321**, with an average spend of **$432**.
+
+Despite representing only 10% of the customer base, this segment contributed approximately **38.4% of total revenue**, equivalent to around **$515K of the $1.34M analyzed revenue**.
+
+This concentration highlights the importance of protecting and retaining high-value customers because their behavior has a disproportionate impact on overall revenue.
+
+---
+
+### 🔁 Top 10% Customers Show Stronger Repeat Behavior
+
+Within the top 10% spending segment, **56.3% were repeat buyers (frequency ≥ 2)**.
+
+This is substantially higher than the overall repeat-purchase rate of **6.22%**.
+
+The finding suggests that customers who generate higher spending are also more likely to purchase repeatedly, making this group a strong priority for **retention and loyalty programs**.
+
+---
+
+### ⭐ High-Value Repeat Customers
+
+A subset of **130 customers with frequency ≥ 3** generated an average spend of **$613**.
+
+These customers combine relatively high spending with repeated purchase behavior, making them strong candidates for:
+
+* VIP customer programs
+* Loyalty rewards
+* Personalized promotions
+* Early access to products
+* High-value customer engagement campaigns
+
+This segment represents a smaller but particularly valuable group within the broader top-spending customer base.
+
+---
+
+### 🚨 High-Value Customer at Churn Risk
+
+Customer **41696** was the highest spender, generating **$2,321 across 3 transactions**.
+
+However, the customer has been inactive for **672 days**.
+
+The combination of **high historical monetary value, multiple transactions, and prolonged inactivity** indicates a potentially high-value customer at significant churn risk.
+
+This type of customer should be prioritized for **reactivation campaigns and personalized retention efforts** rather than treated the same as inactive low-value customers.
+
 
 ---
 
