@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project analyzes **customer demographics, purchase behavior, and RFM-based customer segmentation** using the TheLook Ecommerce public dataset to understand customer base composition, purchasing patterns, and high-value customer segments.
+This project analyzes **customer demographics, purchase behavior, and RFM-based customer segmentation over a 24-month period (January 2024 – December 2025)** using the TheLook Ecommerce public dataset to understand customer base composition, purchasing patterns, and high-value customer segments.
 
 The analysis focuses on identifying **customer demographic distributions, one-time vs. repeat buyers, and high-value customers based on monetary spending** to support customer retention, targeting, and loyalty strategies.
 
