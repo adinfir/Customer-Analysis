@@ -180,178 +180,108 @@ Customers whose cumulative monetary distribution places them in the top 10% base
 
 ---
 
-## 📈 Insight
+## 📈 Key Findings
 
-### 👥 Customer Base Distribution
-
-The analysis identified **27,456 customers across 15 countries**, with gender distribution nearly balanced between **Female (50.4%)** and **Male (49.6%)**.
-
-This indicates that the customer base does not have a significant gender concentration, allowing marketing strategies to be designed without relying heavily on gender-based targeting.
-
----
-
-### 👨‍👩‍👧 Dominant Customer Age Segments
-
-**Gen X (27.6%)** and **Millennials (26.6%)** were the two largest customer segments, together representing more than half of the total customer base.
-
-This indicates that customers within these age groups represent an important target audience for customer engagement, retention, and promotional strategies
-
----
-
-### 🌎 Customer Concentration by Country
-
-**China (33.8%)** and the **United States (22.5%)** were the two largest customer markets.
-
-Together with **Brazil, South Korea, and France**, these five countries accounted for approximately **81.2% of the total customer base**.
-
-This concentration suggests that customer acquisition and retention strategies in these key markets could have a significant impact on overall customer performance.
-
----
-
-### 🔄 Customer Retention Challenge
-
-Approximately **88% of customers were one-time buyers**, while only **12% (3,422 customers)** had made multiple purchases.
-
-This indicates a potential customer retention challenge, as the majority of customers did not return for another purchase.
-
-Improving repeat purchase behavior could therefore provide a significant opportunity for increasing customer lifetime value.
-
----
-
-### 💎 Top 10% High-Value Customers
-
-The RFM Pareto analysis identified **2,756 customers in the top 10% spending segment**.
-
-These customers had total spending ranging from approximately **$276 to $3,126**, with an average spending level of approximately **$514**.
-
-This segment represents the highest-value portion of the customer base and can be prioritized for retention, loyalty, and personalized marketing initiatives.
-
----
-
-### 🔁 Top 10% Customers Show Stronger Repeat Behavior
-
-Within the top 10% spending segment, approximately **64% of customers were repeat buyers with a frequency of at least 2 transactions**.
-
-This is substantially higher than the repeat-buyer proportion across the overall customer base.
-
-The result suggests a strong relationship between **customer purchase frequency and monetary value**, making repeat purchase behavior an important factor in identifying high-value customers.
-
----
-
-### 🏆 High-Frequency High-Value Customers
-
-The analysis identified **295 customers with at least 3 completed transactions** within the top 10% monetary segment.
-
-These customers generated an average spending level of approximately **$837**, significantly higher than the overall top-10% segment average of $514.
-
-This group represents the strongest candidates for **VIP programs, loyalty rewards, personalized offers, and retention initiatives**.
-
----
-
-### ⚠️ High-Value Customer at Risk
-
-Customer **89173** was identified as the top spender, with approximately **$3,126 in total spending across 4 transactions**.
-
-However, the customer had been inactive for approximately **451 days** based on the recency calculation.
-
-Despite having high monetary value and multiple purchases, the long period since the last transaction indicates a potential **churn risk**.
-
-This customer profile demonstrates why combining **Monetary, Frequency, and Recency** is more useful than evaluating customer value based on spending alone.*.
+* **11,825 customers** across 15 countries, with a nearly balanced gender distribution — **Female 51.2%** vs **Male 48.8%**.
+* **Gen X (27.4%)** and **Millennial (25.9%)** are the two largest age segments, together representing more than half of the customer base.
+* **China (33.9%)** and the **United States (22.8%)** are the two largest customer markets. Combined with Brazil, South Korea, and France, these five markets account for **81.4%** of the total customer base.
+* Customer retention remains a major challenge: **93.78% of customers are one-time buyers**, while only **6.22% (735 customers)** made multiple purchases during 2024–2025.
+* RFM-based Pareto analysis identified **1,192 top-10% customers**, with spending ranging from **$239 to $2,321** and an average spend of **$432**. This segment contributed **38.4% of total revenue**, equivalent to approximately **$515K of $1.34M**.
+* Within the top 10% spending segment, **56.3% are repeat buyers (frequency ≥ 2)**, indicating substantially stronger purchase behavior than the overall customer base and making this group a priority for retention initiatives.
+* **130 high-value customers** with **frequency ≥ 3** generated an average spend of **$613**, making them strong candidates for VIP, loyalty, and personalized retention programs.
+* The **highest-spending customer (ID 41696)** generated **$2,321** across 3 transactions but has been inactive for **672 days**, indicating a high-value customer with significant churn risk.
 
 ---
 
 ## 🧮 SQL Techniques Demonstrated
 
-This project demonstrates practical SQL techniques commonly used in Data Analyst workflows.
+### 1. CTE (Common Table Expression)
 
-### CTE
-
-CTEs were used to organize customer purchase classification, demographic segmentation, and RFM calculation into logical analytical steps..
+Used multiple CTEs to break complex customer analysis into logical stages, such as customer aggregation, classification, RFM calculation, and percentile segmentation.
 
 ```sql
-WITH base AS (
-  SELECT
-    user_id,
-    COUNT(order_id) AS total_order
-  FROM `bigquery-public-data.thelook_ecommerce.orders`
-  WHERE status = 'Complete'
-  GROUP BY user_id
-)
+WITH base AS (...),
+flagging AS (...),
+total_customer AS (...)
 ```
 
-### CASE WHEN
+### 2. Date Filtering with `FORMAT_DATE()`
 
-```CASE WHEN``` was used to classify customers based on purchase behavior.
+Restricted the analysis to the **2024–2025** period using year-based filtering on `created_at`.
+
+```sql
+WHERE FORMAT_DATE('%Y', created_at) IN ('2024', '2025')
+```
+
+### 3. `CASE WHEN` for Customer Segmentation
+
+Used conditional logic to classify customers into purchase behavior and demographic segments.
 
 ```sql
 CASE
   WHEN total_order = 1 THEN 'one_time_buyer'
   WHEN total_order > 1 THEN 'multiple_buyer'
-END AS classification
+END
 ```
 
-It was also used to classify customers into age generations.
+Age segmentation was also created using multiple conditions:
 
 ```sql
 CASE
-  WHEN age < 18 THEN "Teen"
-  WHEN age BETWEEN 18 AND 26 THEN 'Gen Z'
-  WHEN age BETWEEN 27 AND 42 THEN 'Millenial'
+  WHEN age BETWEEN 27 AND 42 THEN 'Millennial'
   WHEN age BETWEEN 43 AND 58 THEN 'Gen X'
-  WHEN age BETWEEN 59 AND 75 THEN 'Boomer'
-END AS segmentation
+END
 ```
 
-### Aggregation
+### 4. Aggregation & `GROUP BY`
 
-Aggregation functions were used to calculate customer counts, purchase frequency, and total spending.
-
-```sql
-COUNT(user_id) AS total_cust
-```
+Used `COUNT()`, `COUNT(DISTINCT)`, `SUM()`, `AVG()`, and `GROUP BY` to calculate customer counts, purchase frequency, and monetary value.
 
 ```sql
-COUNT(DISTINCT c.order_id) AS frequency
-```
-
-```sql
+COUNT(DISTINCT c.order_id) AS frequency,
 SUM(a.sale_price) AS monetary
 ```
 
-### Date Functions
-```DATE_TRUNC()``` was used to standardize transaction dates, while DATE_DIFF() was used to calculate customer recency.
+### 5. `JOIN` & `CROSS JOIN`
+
+Joined customer, order, and transaction-level data to combine demographic and purchasing information.
 
 ```sql
-DATE_DIFF(
-  b.date_max,
-  d.max_sales_date,
-  DAY
-) AS recency
+JOIN bigquery-public-data.thelook_ecommerce.users u
+  ON o.user_id = u.id
 ```
 
-### Window Function
-```CUME_DIST()``` was used to calculate the cumulative distribution of customer monetary value and identify the top 10% highest-spending customers.
+A `CROSS JOIN` was used to apply the maximum analysis date to each customer's RFM calculation.
 
 ```sql
-CUME_DIST() OVER (
-  ORDER BY monetary ASC
-) AS pct
+CROSS JOIN max_date b
 ```
-Customers with a cumulative distribution above 90% were classified as the top 10% segment.
+
+### 6. Window Function — `CUME_DIST()`
+
+Used `CUME_DIST()` to calculate each customer's cumulative distribution based on monetary value and identify the top 10% highest-spending customers.
 
 ```sql
-CASE
-  WHEN pct > 0.90 THEN 'top_10_pct'
-  ELSE 'regular'
-END AS seg_pct
+CUME_DIST() OVER(ORDER BY monetary ASC) AS pct
 ```
 
-### RFM Analysis
+### 7. Ratio & Percentage Calculation
 
-RFM analysis was used to evaluate customers based on three dimensions:
-- **Recency** = how recently the customer made a purchase
-- **Frequency** = how many completed orders the customer made
-- **Monetary** = how much the customer spent
+Calculated the proportion of one-time and multiple buyers relative to the total customer base.
+
+```sql
+ROUND(a.total_cust / b.total_cust * 100, 2) AS pct
+```
+
+The same approach was used to translate the cumulative distribution into a percentage-based customer segment.
+
+### 8. RFM Calculation
+
+Combined **Recency, Frequency, and Monetary** metrics to evaluate customer value:
+
+* **Recency:** days since the customer's most recent purchase
+* **Frequency:** number of distinct completed orders
+* **Monetary:** total spending based on `sale_price`
 
 ```sql
 DATE_DIFF(b.date_max, d.max_sales_date, DAY) AS recency,
@@ -359,26 +289,15 @@ COUNT(DISTINCT c.order_id) AS frequency,
 SUM(a.sale_price) AS monetary
 ```
 
-### CROSS JOIN
+### 9. Conditional Aggregation
 
-```CROSS JOIN``` was used to compare customer classifications against the overall customer population when calculating customer percentages
-
-```sql
-FROM flagging a
-CROSS JOIN total_customer b
-```
-
-### JOIN
-
-```JOIN```  was used to combine customer demographic information with completed order data.
+Used conditional counting to classify and summarize customer purchase behavior.
 
 ```sql
-FROM `bigquery-public-data.thelook_ecommerce.orders` o
-JOIN `bigquery-public-data.thelook_ecommerce.users` u
-  ON o.user_id = u.id
-WHERE o.status = 'Complete'
+COUNTIF(...)
 ```
 
+and multiple aggregation stages were used to produce customer-level distributions.
 
 ---
 
@@ -400,13 +319,13 @@ Customer-Analysis/
 │   └── Preview Table users the_look ecommerce.jpeg
 │
 └── dashboard/
-│   └── dashboard.jpeg
+│   └── dashboard.png
 └── Output/
-    └── Output Query 1.jpeg
-    └── Output Query 2.1.jpeg
-    └── Output Query 2.2.jpeg
-    └── Output Query 2.3.jpeg
-    └── Output Query 3.jpeg
+    └── Output Query 1.png
+    └── Output Query 2.1.png
+    └── Output Query 2.2.png
+    └── Output Query 2.3.png
+    └── Output Query 3.png
 ```
 
 > The project uses the public TheLook Ecommerce dataset available through Google BigQuery. No private customer transaction data is included in this repository.
